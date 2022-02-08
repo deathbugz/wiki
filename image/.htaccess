@@ -1,0 +1,16 @@
+# BEGIN WordPress
+
+RewriteEngine On
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+#RewriteRule ^index\.php$ - [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.php [L]
+
+#/logo/Vehicles%20Information%20Centera%20AJeb%20Jon?resize=380,80
+RewriteRule ^logo/([^/]*)$ /logo.php?ref=$1 [L]
+RewriteRule ^wikiimage/([^/]*)$ /wikiimage.php?ref=$1 [L]
+RewriteRule ^wikiimage/([^/]*)/([^/]*)$ /wikiimage.php?ref=$1 [L]
+
+# END WordPress
