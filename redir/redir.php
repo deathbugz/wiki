@@ -1,5 +1,15 @@
 <?php   
-error_reporting(E_ALL & ~E_NOTICE);  
+session_start();
+#error_reporting(E_ALL & ~E_NOTICE);  
+error_reporting(0);
+
+stream_context_set_default( [
+    'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ],
+]);
+
 $exp = 'Category:';  
 if(!$a = $_GET['a']) $a = 'Vehicles_by_brand';  
 $url = 'https://en.wikipedia.org/w/index.php?title=Special:RandomInCategory/';   
@@ -15,8 +25,11 @@ while($i == 1 && $j < 5){
     $urls = $url.end(explode($exp,$headl));  
     //echo " $urls<hr / >";   
 }  
+#echo $headl;
+session_destroy();
 if($j < 5){  
     header("location: $headl");  
 }  
+
 end();  
-?> 
+?>
