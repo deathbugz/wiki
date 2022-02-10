@@ -26,10 +26,56 @@
   text-align: justify;
   text-justify: inter-word;
   }
+   div.artbody div img{
+    	line-height: 180%;
+  	margin-bottom: 20px !important;
+  }
   
-  div.artbody img{
+  div.artbody br, div.artbody img:not([src]) {
+  display: none;
+  }
+  
+
+  
+  div.artbody img {
   border-radius: 12px;
   }
+  
+  
+    div.artbody img[alt] {
+  margin-left: -16px;
+  text-indent: 16px;
+}
+.artbody img, .related-post-item-thumbnail img{
+  background: url(&#39;https://bit.ly/2Y3uqYZ&#39;);
+  background-size: contain;
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+.artbody img, .related-post-item-thumbnail img {
+  /* must define dimensions */
+  width: 100%;
+  height: auto;
+  min-width: 200px;
+  min-height: 200px;
+  /* hides broken text */
+  color: transparent;
+  /* optional css below here */
+  display: block;
+
+}
   
   .cloud-label-widget-content span.label-size:nth-child(n+70), .cloud-label-widget-content span.label-size:nth-child(-n+0) {
   display: none !important;
@@ -969,7 +1015,7 @@ document.getElementById('fb-root').appendChild(e);
 <header itemprop='mainEntity' itemscope='itemscope' itemtype='http://schema.org/WPHeader'>
 
   <b:section class='header' id='header' maxwidgets='1' showaddelement='yes'>
-    <b:widget id='Header1' locked='false' title='Tourist Attractions USA Center (Header)' type='Header' version='1'>
+    <b:widget id='Header1' locked='false' title='Airlines Informations Center (Header)' type='Header' version='1'>
       <b:widget-settings>
         <b:widget-setting name='displayUrl'/>
         <b:widget-setting name='displayHeight'>0</b:widget-setting>
@@ -2993,30 +3039,8 @@ var _0xadb2=["\x73\x63\x72\x65\x65\x6E\x20\x61\x6E\x64\x20\x28\x6D\x69\x6E\x2D\x
 </script>
 </b:if>
     
-  <script>
+<script>
 //<![CDATA[
-
-/*
-var indeks = 1;
-var ling;
-
-
-
-
-
-
-$(window).ready(function() {
-  $('img').each(function() {
-    if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-      // image was broken, replace with your new image
-ling = 'https://ucupredir.000webhostapp.com/image-'+indeks+'.jpg';
-      this.src = ling;
-indeks++;
-    }
-  });
-});
-
-*/
 
 $(window).ready(function() {
 
@@ -3050,12 +3074,20 @@ $('#img_feat_5').attr('src',$('#img_feat_5').attr('src').replace(/\s/g, '_'));
 
 }
 
-
+$('img').on("error", function() { // Detect if there is an image loading error
+  $(this).attr('src', 'default.jpg'); // Set a default image path that will replace image error icon
+});
 
 });
 
-
-
+$(window).bind('load', function() {
+  $('img').each(function() {
+    if( (typeof this.naturalWidth != "undefined" && this.naturalWidth == 0) 
+    ||  this.readyState == 'uninitialized'                                  ) {
+        $(this).attr('src', 'https://bit.ly/2Y3uqYZ');
+    }
+  });
+});
 
 $('a.zap').click(function(e) {
     e.preventDefault();
