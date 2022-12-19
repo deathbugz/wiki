@@ -48,7 +48,7 @@ $grey2 = imagecolorallocate($im, 220, 220, 220);
 
 $font1 = 'lib/'.'TitilliumWeb-Black.ttf';
 $font2 = 'lib/'.'Roboto-Black.ttf';
-$cat = 'lib/cat_resize2.png';
+$cat = 'lib/world4.png';
 
 $im2 = imagecreatefrompng($cat);
 #list($width, $height) = getimagesize($im2);
@@ -57,7 +57,7 @@ $im2 = imagecreatefrompng($cat);
 #$new_height = $height * $percent;
 #imagecopyresampled($im, $im2, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
-imagecopy($im, $im2, 2, 0, 0, 0, 69, 80);
+imagecopy($im, $im2, 2, 0, 0, 0, 70, 80);
 
 // Add some shadow to the text
 imagelinethick($im, 80,55, 370,55, $grey2, 5);
